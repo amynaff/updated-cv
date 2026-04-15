@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy Naff — Developer & Adventure Curator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #faf8f3;
+            --navy: #1a1a2e;
+            --gold: #d4af37;
+            --teal: #2a8a9e;
+            --warm-sand: #c9b896;
+            --accent-red: #e74c3c;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f0ebe0 100%);
+            color: var(--navy);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorative background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header with mystique */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .mystique-line {
+            height: 2px;
+            width: 60px;
+            background: var(--gold);
+            margin: 20px auto;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: var(--teal);
+            font-style: italic;
+            margin-bottom: 30px;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+        }
+
+        .about-summary {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 60px;
+            border-radius: 2px;
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .about-summary p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .gap-explanation {
+            background: rgba(42, 138, 158, 0.08);
+            padding: 25px;
+            border-radius: 2px;
+            margin-top: 20px;
+            font-style: italic;
+            border-left: 4px solid var(--teal);
+            font-size: 0.95em;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 70px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--navy);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--teal));
+            border-radius: 2px;
+        }
+
+        /* Card styling */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 2px;
+            border-left: 4px solid var(--gold);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--teal);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .card-meta {
+            font-size: 0.95em;
+            color: var(--teal);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            text-align: center;
+            border-radius: 2px;
+            border-top: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--teal), var(--navy));
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(42, 138, 158, 0.3);
+        }
+
+        /* Links and CTAs */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--navy);
+            color: var(--cream);
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--navy);
+        }
+
+        .link-button:hover {
+            background: transparent;
+            color: var(--navy);
+        }
+
+        .link-button.secondary {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--gold);
+        }
+
+        .link-button.secondary:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Achievements section */
+        .achievement {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .achievement-icon {
+            font-size: 2em;
+            min-width: 40px;
+        }
+
+        .achievement-text h4 {
+            color: var(--navy);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .achievement-text p {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        /* Accent elements */
+        .accent-emoji {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            color: var(--navy);
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Amy Naff</h1>
+            <div class="mystique-line"></div>
+            <p class="tagline">Developer • Designer • Adventure Architect</p>
+        </header>
+
+        <!-- About Summary -->
+        <div class="about-summary">
+            <p>🎯 Building & shipping web experiences. Currently traveling (Thailand → Bali → Mexico → TBD), hosting Airbnb guests with a 4.95★ rating across 1,330+ reviews, and running moves from a digital nomad setup.</p>
+            <p>📊 Bitcoin enthusiast since 2017 | Marathon finisher (2024) | Self-directed learner | Side quest specialist</p>
+            <div class="gap-explanation">
+                <strong>The Gap Explained:</strong><br>
+                I was studying awareness—Dzogchen, specifically. The silence was never about mystique; it was about not needing external validation. Moving quietly meant I could actually think. That foundation shows up in everything now—MyLunarPhase especially. Better product decisions. Clearer communication. Deeper listening to what users actually need.
+            </div>
+        </div>
+
+        <!-- Key Stats -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">4.95★</div>
+                <div class="stat-label">Airbnb Rating</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1,330+</div>
+                <div class="stat-label">Guest Reviews</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">15y</div>
+                <div class="stat-label">Hosting Experience</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">42.2km</div>
+                <div class="stat-label">Marathon Complete</div>
+            </div>
+        </div>
+
+        <!-- Property Management -->
+        <section>
+            <h2><span class="accent-emoji">🏠</span> Property Management</h2>
+            <div class="card">
+                <h3>Multi-Property Airbnb Host</h3>
+                <p class="card-meta">15 years | 4.95★ rating | 1,330+ reviews</p>
+                <p>Managed multiple properties with consistent 5-star hospitality. Expert in:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Guest communication & satisfaction optimization</li>
+                    <li>Property management & maintenance coordination</li>
+                    <li>Arrival guides & check-in logistics</li>
+                    <li>Revenue optimization & seasonal pricing</li>
+                    <li>Airbnb platform mechanics & algorithm understanding</li>
+                </ul>
+                <p style="margin-top: 15px;">Currently transitioning to full-time travel while maintaining remote property oversight.</p>
+            </div>
+        </section>
+
+        <!-- Development Work -->
+        <section>
+            <h2><span class="accent-emoji">💻</span> Web Development</h2>
+
+            <!-- Flagship Project -->
+            <div class="card" style="border-left-color: var(--accent-red); border-top: 3px solid var(--accent-red);">
+                <h3>🚀 MyLunarPhase — Women's Hormonal Wellness App (Flagship)</h3>
+                <p class="card-meta">In Development | TypeScript, React, Node.js, Prisma, Mobile</p>
+                <p><strong>Live:</strong> <a href="https://www.mylunarphase.com" style="color: var(--accent-red); font-weight: 600;">www.mylunarphase.com</a> | <a href="https://github.com/amynaff/my-lunar-phase" style="color: var(--accent-red); font-weight: 600;">GitHub</a> | 246 commits</p>
+
+                <p style="margin-top: 15px;"><strong>What it does:</strong> A comprehensive wellness platform for women at every life stage — from reproductive years through perimenopause, menopause, and post-menopause. Not just another period tracker.</p>
+
+                <p style="margin-top: 15px;"><strong>Core Features (Live & In Progress):</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Phase-specific nutrition, movement, and self-care guidance</li>
+                    <li>LunaAI Journal — AI-powered journaling that reads entries and responds personally</li>
+                    <li>Moon phase wisdom + menstrual cycle tracking integration</li>
+                    <li>Comprehensive labs guide for hormone health</li>
+                    <li>Partner support & cycle sharing features</li>
+                    <li>Pattern analysis & symptom tracking</li>
+                    <li>Multi-platform: Web app (live), iOS & Android (coming soon)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Tech Stack:</strong> TypeScript, React, Node.js, Prisma ORM, full-stack architecture with mobile app in development</p>
+
+                <p style="margin-top: 15px;"><strong>Status:</strong> Web app live with 60-day free trial. Deep in active development — building features, refining UX, preparing mobile launches. This is where a lot of my energy is going right now.</p>
+            </div>
+
+            <!-- Other Projects -->
+            <div class="card">
+                <h3>Other Projects & Learning</h3>
+                <p style="margin-bottom: 15px;"><strong>Rythum</strong> — Interactive audio/rhythm application (TypeScript)</p>
+                <p>Plus 22 additional repositories spanning web design, frontend experiments, and explorations across the stack. Each one a lesson in shipping, iterating, and building better.</p>
+                <p style="margin-top: 15px;">📍 Full Portfolio: <a href="https://amynaff.github.io/WebDev-site/" style="color: var(--teal); font-weight: 600;">amynaff.github.io/WebDev-site</a></p>
+            </div>
+
+            <div class="card">
+                <h3>Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag">TypeScript</div>
+                    <div class="skill-tag">React</div>
+                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">Prisma</div>
+                    <div class="skill-tag">Full Stack</div>
+                    <div class="skill-tag">Web Design</div>
+                    <div class="skill-tag">CSS/SCSS</div>
+                    <div class="skill-tag">HTML5</div>
+                    <div class="skill-tag">Figma</div>
+                    <div class="skill-tag">UX/UI</div>
+                    <div class="skill-tag">SaaS</div>
+                    <div class="skill-tag">Git</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lifestyle & Movement -->
+        <section>
+            <h2><span class="accent-emoji">🌍</span> Digital Nomad & Wellness</h2>
+            <div class="achievement">
+                <div class="achievement-icon">🏃</div>
+                <div class="achievement-text">
+                    <h4>Marathon Finisher (2024)</h4>
+                    <p>42.2km endurance test. Proof of commitment to seeing things through.</p>
+                </div>
+            </div>
+            <div class="achievement">
+                <div class="achievement-icon">🚀</div>
+                <div class="achievement-text">
+                    <h4>Bitcoin Holder Since 2017</h4>
+                    <p>Early adopter. Understands decentralization, blockchain infrastructure, and crypto fundamentals.</p>
+                </div>
+            </div>
+            <div class="achievement">
+                <div class="achievement-icon">✈️</div>
+                <div class="achievement-text">
+                    <h4>Traveling Since August 2025</h4>
+                    <p>Thailand → Bali → Mexico → Next (Location-independent builder exploring markets globally)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Focus -->
+        <section>
+            <h2><span class="accent-emoji">🎯</span> Current Pursuits</h2>
+            <div class="card">
+                <p><strong>🚀 Building MyLunarPhase:</strong> Full-time focus on shipping the flagship women's wellness app. Working through feature development, mobile launch prep, and scaling the platform.</p>
+                <p style="margin-top: 15px;"><strong>📚 Parallel interests:</strong> Deep dives into LLMs (especially for LunaAI), AI integrations | Design systems in Figma | Exploring location strategy (next destination TBD) | Monitoring crypto markets (bitcoiner since 2017)</p>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://github.com/amynaff" class="link-button">
+                GitHub
+            </a>
+            <a href="https://amynaff.github.io/WebDev-site/" class="link-button secondary">
+                Portfolio
+            </a>
+            <a href="mailto:tech.803cu@simplelogin.co" class="link-button secondary">
+                Email
+            </a>
+        </div>
+
+        <footer>
+            <p>📍 Based: Digital Nomad Mode</p>
+            <p style="margin-top: 10px; font-size: 0.85em; color: var(--teal);">Plotting. Scheming. Monitoring the situation. Always learning.</p>
+        </footer>
+    </div>
+</body>
+</html>
