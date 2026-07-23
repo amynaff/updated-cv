@@ -67,6 +67,40 @@
             animation: slideIn 0.8s ease-out;
         }
 
+        .terminal {
+            background: var(--navy);
+            color: #7ee787;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85em;
+            padding: 18px 22px;
+            border-radius: 6px;
+            max-width: 560px;
+            margin: 25px auto 0;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeIn 1.4s ease-out 0.5s both;
+        }
+
+        .terminal .dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .terminal .dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .terminal .dots span:nth-child(1) { background: #ff5f56; }
+        .terminal .dots span:nth-child(2) { background: #ffbd2e; }
+        .terminal .dots span:nth-child(3) { background: #27c93f; }
+
+        .terminal .prompt { color: var(--gold); }
+        .terminal .comment { color: #8b949e; }
+
         h1 {
             font-size: 3.5em;
             font-weight: 700;
@@ -397,15 +431,28 @@
             <h1>Amy Naff</h1>
             <div class="mystique-line"></div>
             <p class="tagline">Developer • Designer • Adventure Architect</p>
+            <div class="terminal">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <div><span class="prompt">$</span> whoami</div>
+                <div>&gt; solo builder, three shipped platforms, zero co-founders</div>
+                <div><span class="prompt">$</span> ps aux | grep amy</div>
+                <div>&gt; mylunarphase.com &nbsp;<span class="comment">// women's health, full-stack</span></div>
+                <div>&gt; btcbasicsforeveryone.com &nbsp;<span class="comment">// live on the App Store</span></div>
+                <div>&gt; hermes-agent &nbsp;<span class="comment">// local LLM swarm, cron 12:03 daily</span></div>
+                <div><span class="prompt">$</span> python3 world.py</div>
+                <div>&gt; generative-terminal-world &nbsp;<span class="comment">// infinite city, for fun</span></div>
+                <div><span class="prompt">$</span> uptime</div>
+                <div>&gt; 15 years hosting guests, shipping code the whole time</div>
+            </div>
         </header>
 
         <!-- About Summary -->
         <div class="about-summary">
-            <p>🎯 Building & shipping web experiences. Currently traveling (Thailand → Bali → Mexico → TBD), hosting Airbnb guests with a 4.95★ rating across 1,330+ reviews, and running moves from a digital nomad setup.</p>
-            <p>📊 Bitcoin enthusiast since 2017 | Marathon finisher (2024) | Self-directed learner | Side quest specialist</p>
+            <p>🎯 Solo builder shipping real, live products end to end — front end, back end, App Store, deploys, the whole stack. Currently traveling (Thailand → Bali → Mexico → TBD), hosting Airbnb guests with a 4.95★ rating across 1,330+ reviews, and running two production apps from a digital nomad setup.</p>
+            <p>📊 Bitcoin enthusiast since 2017 | Marathon finisher (2024) | Self-directed learner | Side quest specialist | Runs a local LLM agent swarm for fun</p>
             <div class="gap-explanation">
-                <strong>The Gap Explained:</strong><br>
-                I was studying awareness—Dzogchen, specifically. The silence was never about mystique; it was about not needing external validation. Moving quietly meant I could actually think. That foundation shows up in everything now—MyLunarPhase especially. Better product decisions. Clearer communication. Deeper listening to what users actually need.
+                <strong>The Gap, Explained:</strong><br>
+                Yes, there's a gap in the timeline. I spent it studying Dzogchen — basically a crash course in sitting still, paying attention, and not needing a gold star for it. Turns out that's oddly useful training for building products: it's easier to hear what users actually need when you're not busy performing. MyLunarPhase is where that pays off the most.
             </div>
         </div>
 
@@ -426,6 +473,10 @@
             <div class="stat-box">
                 <div class="stat-number">42.2km</div>
                 <div class="stat-label">Marathon Complete</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Apps Shipped Live</div>
             </div>
         </div>
 
@@ -454,25 +505,51 @@
             <!-- Flagship Project -->
             <div class="card" style="border-left-color: var(--accent-red); border-top: 3px solid var(--accent-red);">
                 <h3>🚀 MyLunarPhase — Women's Hormonal Wellness App (Flagship)</h3>
-                <p class="card-meta">In Development | TypeScript, React, Node.js, Prisma, Mobile</p>
-                <p><strong>Live:</strong> <a href="https://www.mylunarphase.com" style="color: var(--accent-red); font-weight: 600;">www.mylunarphase.com</a> | <a href="https://github.com/amynaff/my-lunar-phase" style="color: var(--accent-red); font-weight: 600;">GitHub</a> | 246 commits</p>
+                <p class="card-meta">Three-Platform Architecture | Web + Backend + Mobile</p>
+                <p><strong>Live:</strong> <a href="https://www.mylunarphase.com" style="color: var(--accent-red); font-weight: 600;">www.mylunarphase.com</a> | <a href="https://github.com/amynaff/my-lunar-phase" style="color: var(--accent-red); font-weight: 600;">GitHub</a></p>
 
-                <p style="margin-top: 15px;"><strong>What it does:</strong> A comprehensive wellness platform for women at every life stage — from reproductive years through perimenopause, menopause, and post-menopause. Not just another period tracker.</p>
+                <p style="margin-top: 15px;"><strong>What it does:</strong> A comprehensive wellness platform for women at every life stage — from reproductive years through perimenopause, menopause, and post-menopause. Not just another period tracker; built to compete seriously in the women's health market, with real depth on the perimenopause gap most apps ignore.</p>
 
-                <p style="margin-top: 15px;"><strong>Core Features (Live & In Progress):</strong></p>
+                <p style="margin-top: 15px;"><strong>Core Features:</strong></p>
                 <ul style="margin-left: 20px; margin-top: 10px;">
                     <li>Phase-specific nutrition, movement, and self-care guidance</li>
                     <li>LunaAI Journal — AI-powered journaling that reads entries and responds personally</li>
                     <li>Moon phase wisdom + menstrual cycle tracking integration</li>
                     <li>Comprehensive labs guide for hormone health</li>
                     <li>Partner support & cycle sharing features</li>
-                    <li>Pattern analysis & symptom tracking</li>
-                    <li>Multi-platform: Web app (live), iOS & Android (coming soon)</li>
+                    <li>Subscription billing via Stripe (web) and RevenueCat (mobile IAP)</li>
+                    <li>Multi-platform: Web app (live), iOS in App Store submission</li>
                 </ul>
 
-                <p style="margin-top: 15px;"><strong>Tech Stack:</strong> TypeScript, React, Node.js, Prisma ORM, full-stack architecture with mobile app in development</p>
+                <p style="margin-top: 15px;"><strong>Architecture:</strong> Next.js 16 web app on Netlify · Hono + Bun API on Railway · Expo/React Native mobile shipping via Xcode Archive · Better Auth across backend & mobile · Railway PostgreSQL</p>
 
-                <p style="margin-top: 15px;"><strong>Status:</strong> Web app live with 60-day free trial. Deep in active development — building features, refining UX, preparing mobile launches. This is where a lot of my energy is going right now.</p>
+                <p style="margin-top: 15px;"><strong>Status:</strong> Web app live with free trial, backend deployed to production, iOS build in the App Store Connect pipeline. This is where most of my energy goes right now.</p>
+            </div>
+
+            <!-- Bitcoin Basics -->
+            <div class="card" style="border-left-color: #f7931a; border-top: 3px solid #f7931a;">
+                <h3>₿ Bitcoin Basics for Everyone — Live on the App Store</h3>
+                <p class="card-meta">Shipped & Published | Next.js, Expo/React Native, Tailwind CSS</p>
+                <p><strong>Live:</strong> <a href="https://btcbasicsforeveryone.com" style="color: #b8730f; font-weight: 600;">btcbasicsforeveryone.com</a> | <a href="https://apps.apple.com/app/id6759878162" style="color: #b8730f; font-weight: 600;">App Store</a> | <a href="https://github.com/amynaff/rork-bitcoin-basics-for-everyone" style="color: #b8730f; font-weight: 600;">GitHub</a></p>
+
+                <p style="margin-top: 15px;"><strong>What it does:</strong> Plain-English Bitcoin education, born out of literally teaching Bitcoin to friends and family. 27 lessons across self-custody, privacy, buying without KYC, and the Lightning Network — 11 free, rest unlocked via one-time IAP (no subscriptions).</p>
+
+                <p style="margin-top: 15px;"><strong>Built solo, end to end:</strong> Marketing site with a live BTC price ticker and sats/dollar converter, a static-export Next.js build auto-deployed to Netlify, an Expo app with progress tracking and quizzes, and full accessibility pass (screen reader labels, focus states, reduced-motion support).</p>
+
+                <p style="margin-top: 15px;"><strong>Also runs:</strong> an automated uptime monitor (n8n) and a content promotion agent (see Hermes below) that markets the app on its own.</p>
+            </div>
+
+            <!-- Generative Terminal World -->
+            <div class="card" style="border-left-color: #9b5de5; border-top: 3px solid #9b5de5;">
+                <h3>🌆 Generative Terminal World — Infinite Cyberpunk City in Your Terminal</h3>
+                <p class="card-meta">Just Shipped | Python, Rich, Procedural Generation</p>
+                <p><strong>Code:</strong> <a href="https://github.com/amynaff/generative-terminal-world" style="color: #7a3fc4; font-weight: 600;">GitHub</a></p>
+
+                <p style="margin-top: 15px;">A goofy, genuinely fun side project: walk around an endlessly-generating neon city rendered entirely in your terminal. Streets, alleys, plazas, markets, corporate sectors, slums, rooftops, and clubs — with random street events as you explore.</p>
+
+                <p style="margin-top: 15px;"><strong>The trick:</strong> every coordinate is generated on the fly with a seeded RNG (md5 hash of its x:y position), so the world is infinite but stable — walk away and come back, the same block is exactly where you left it, with nothing pre-stored.</p>
+
+                <p style="margin-top: 15px;">WASD/arrow-key movement, built on <code>rich</code> for the terminal rendering. Actively growing — this is the "I built this because it was fun" shelf, and it's staying open.</p>
             </div>
 
             <!-- Other Projects -->
@@ -483,21 +560,35 @@
                 <p style="margin-top: 15px;">📍 Full Portfolio: <a href="https://amynaff.github.io/WebDev-site/" style="color: var(--teal); font-weight: 600;">amynaff.github.io/WebDev-site</a></p>
             </div>
 
+            <!-- Automation & AI -->
+            <div class="card" style="border-left-color: var(--teal); border-top: 3px solid var(--teal);">
+                <h3>🤖 Hermes Agent — Local LLM Bitcoin Content Swarm</h3>
+                <p class="card-meta">Python, Ollama (local inference), Tweepy, Cron</p>
+                <p>A 4-agent "swarm" that researches, writes, and posts Bitcoin education content as <strong>@_bitcoin_basics</strong> — running entirely on a local <code>hermes3</code> model via Ollama, zero cloud LLM cost. Pipeline: pick topic → research → write (with a custom voice/style rules engine) → post to X → email recap. Cron-scheduled daily, plus a manual approve-before-post mode.</p>
+                <p style="margin-top: 15px;">Also builds automation with <strong>n8n</strong> (self-hosted, workflow-based monitoring/alerting) and integrates MCP tooling into daily dev workflow.</p>
+            </div>
+
             <div class="card">
                 <h3>Technical Skills</h3>
                 <div class="skills-grid">
                     <div class="skill-tag">TypeScript</div>
-                    <div class="skill-tag">React</div>
-                    <div class="skill-tag">Node.js</div>
+                    <div class="skill-tag">React / Next.js</div>
+                    <div class="skill-tag">Expo / React Native</div>
+                    <div class="skill-tag">Node.js / Bun</div>
+                    <div class="skill-tag">Hono</div>
                     <div class="skill-tag">Prisma</div>
+                    <div class="skill-tag">PostgreSQL</div>
+                    <div class="skill-tag">Railway</div>
+                    <div class="skill-tag">Netlify</div>
+                    <div class="skill-tag">Stripe / RevenueCat</div>
+                    <div class="skill-tag">Better Auth</div>
+                    <div class="skill-tag">Local LLMs (Ollama)</div>
+                    <div class="skill-tag">n8n Automation</div>
                     <div class="skill-tag">Full Stack</div>
-                    <div class="skill-tag">Web Design</div>
                     <div class="skill-tag">CSS/SCSS</div>
-                    <div class="skill-tag">HTML5</div>
-                    <div class="skill-tag">Figma</div>
-                    <div class="skill-tag">UX/UI</div>
-                    <div class="skill-tag">SaaS</div>
+                    <div class="skill-tag">Figma / UX</div>
                     <div class="skill-tag">Git</div>
+                    <div class="skill-tag">App Store Shipping</div>
                 </div>
             </div>
         </section>
@@ -532,8 +623,9 @@
         <section>
             <h2><span class="accent-emoji">🎯</span> Current Pursuits</h2>
             <div class="card">
-                <p><strong>🚀 Building MyLunarPhase:</strong> Full-time focus on shipping the flagship women's wellness app. Working through feature development, mobile launch prep, and scaling the platform.</p>
-                <p style="margin-top: 15px;"><strong>📚 Parallel interests:</strong> Deep dives into LLMs (especially for LunaAI), AI integrations | Design systems in Figma | Exploring location strategy (next destination TBD) | Monitoring crypto markets (bitcoiner since 2017)</p>
+                <p><strong>🚀 Building MyLunarPhase:</strong> Full-time focus on the flagship women's wellness app — mobile App Store submission in progress, backend on Railway, web live on Netlify.</p>
+                <p style="margin-top: 15px;"><strong>₿ Maintaining Bitcoin Basics for Everyone:</strong> Live App Store app plus a self-running content/marketing loop (Hermes agent + n8n) that keeps the site monitored and the audience growing without daily manual effort.</p>
+                <p style="margin-top: 15px;"><strong>📚 Parallel interests:</strong> Deep dives into LLMs (LunaAI, local Ollama agents) | Design systems in Figma | Exploring location strategy (next destination TBD) | Monitoring crypto markets (bitcoiner since 2017)</p>
             </div>
         </section>
 
